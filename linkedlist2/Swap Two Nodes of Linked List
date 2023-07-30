@@ -1,0 +1,37 @@
+
+Node *swapNodes(Node *head, int i, int j)
+{
+	//Write your code here
+	if(head==NULL){
+		return head;
+	}
+	Node* temp=head;
+	Node *c1=NULL;
+	Node *c2=NULL;
+	Node* p1=NULL;
+	Node *p2=NULL;
+	int count =0;
+	while(temp!=NULL){
+		if(count==i-1){
+			p1=temp;
+			c1=temp->next;
+		}
+		if(count==j-1){
+			p2=temp;
+			c2=temp-> next;
+		}
+		temp=temp->next;
+		count++;
+	}
+	if(c1==NULL || c2==NULL)
+	{
+		return NULL;
+	}
+    p1->next=c2;
+	p2->next=c1;
+	c1->next=c2->next;
+	c2->next=p2;
+	
+	
+	return head;
+}
